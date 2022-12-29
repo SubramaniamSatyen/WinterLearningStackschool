@@ -82,6 +82,10 @@ h4 {
 	color:greenyellow
 }
 
+.Login {
+	margin: 10px
+}
+
 .todo .delete-todo {
 	position: absolute;
 	top: 50%;

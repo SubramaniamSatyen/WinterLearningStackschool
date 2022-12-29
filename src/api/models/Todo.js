@@ -15,6 +15,10 @@ const TodoSchema = new Schema({
         type: Boolean,
         default: false
     },
+    user: {
+        type: String,
+        required: true
+    },
     timestamp: {
         type: String,
         default: Date.now

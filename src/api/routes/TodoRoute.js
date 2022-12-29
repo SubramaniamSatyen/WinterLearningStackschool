@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllTodos, createNewTodo, deleteTodo, completeTodo, editTodo, favTodo } = require("../controllers/TodoController");
+const { getAllTodos, createNewTodo, deleteTodo, completeTodo, editTodo, favTodo, getTodos } = require("../controllers/TodoController");
 
 //Initializing router and connecting database endpoints to database functions
 const router = express.Router();
@@ -15,6 +15,8 @@ router.put("/complete-todo", completeTodo);
 router.put("/fav-todo", favTodo);
 
 router.post("/edit-todo", editTodo);
+
+router.post("/get-todos", getTodos);
 
 module.exports = router;
 

@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const TodoRoute = require("./routes/TodoRoute");
+const UserRoute = require("./routes/UserRoute")
 
 const app = express();
 
@@ -15,6 +16,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/mern-todo", {
 
 
 app.use(TodoRoute); 
+app.use(UserRoute);
 
 
 app.listen(3001, () => console.log("Server started on port 3001"));

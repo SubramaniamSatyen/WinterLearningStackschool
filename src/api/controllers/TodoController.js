@@ -7,10 +7,18 @@ module.exports.getAllTodos = async (req, res) => {
     res.json(Todos);
 }
 
+module.exports.getTodos = async (req, res) => {
+    const userID = req.body.user;
+    const Todos = await TodoModel.find({user: userID});
+    res.json(Todos);
+}
+
 module.exports.createNewTodo = (req, res) => {
     const todo = new Todo({
-        text: req.body.text
+        text: req.body.text,
+        user: req.body.user
     });
+    console.log(req.body)
 
     todo.save();
 
