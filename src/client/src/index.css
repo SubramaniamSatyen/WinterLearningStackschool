@@ -77,6 +77,11 @@ h4 {
 	text-decoration: line-through;
 }
 
+.todo.is-fav .text {
+	font-weight: bold;
+	color:greenyellow
+}
+
 .todo .delete-todo {
 	position: absolute;
 	top: 50%;
@@ -126,6 +131,24 @@ h4 {
 	font-weight: 700;
 	padding: 3px;
 }
+
+.todo .fav-todo {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 115px;
+	color: var(--light);
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background-color: #7d8e00;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	padding: 3px;
+}
+
 
 .addPopup {
 	position: fixed;

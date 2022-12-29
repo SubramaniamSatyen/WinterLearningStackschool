@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { HiPencilAlt } from 'react-icons/hi';
 import { BsCheckLg } from 'react-icons/bs';
+import { AiOutlineStar } from 'react-icons/ai';
 
 const API_URL = "http://localhost:3001";
 
@@ -89,6 +90,27 @@ function App() {
     }));
   }  
 
+  const favTodo = async id => {
+    const data = await fetch(API_URL + "/fav-todo", 
+    {
+      method: 'PUT', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({"id": id})
+    }
+    )
+    .then(res => res.json());
+    
+    setTodos(todos => todos.map(todo => {
+      if (todo._id === data._id){
+        todo.favorite = data.favorite;
+      }
+
+      return todo;
+    }));
+  }  
+
 
   return (
     <div className="App">
@@ -96,10 +118,11 @@ function App() {
       <h4>Your Tasks</h4>
       <div className="todos">
           {todos.map(todo => (
-            <div className={"todo" + (todo.complete ? " is-complete" : "")} 
+            <div className={"todo" + (todo.complete ? " is-complete" : "") + (todo.favorite ? " is-fav" : "")} 
                 key={todo._id}>
                 <div className="checkbox"></div>
                 <div className="text">{todo.text}</div>
+                <AiOutlineStar className="fav-todo" onClick={() => favTodo(todo._id)} />
                 <BsCheckLg className="complete-todo" onClick={() => completeTodo(todo._id)}/>
                 <HiPencilAlt className="edit-todo" onClick={() => setEditActive(todo._id)}/>
                 <div className="delete-todo" onClick={(e) => {

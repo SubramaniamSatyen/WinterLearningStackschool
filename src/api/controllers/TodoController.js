@@ -38,3 +38,11 @@ module.exports.completeTodo = async (req, res) => {
     todo.save();
     res.json(todo);
 }
+
+module.exports.favTodo = async (req, res) => {
+    const todo = await Todo.findById(req.body.id);
+
+    todo.favorite = !(todo.favorite)
+    todo.save();
+    res.json(todo);
+}

@@ -11,6 +11,10 @@ const TodoSchema = new Schema({
         type: Boolean,
         default: false
     },
+    favorite:{
+        type: Boolean,
+        default: false
+    },
     timestamp: {
         type: String,
         default: Date.now
